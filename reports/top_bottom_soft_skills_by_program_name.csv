@@ -1,0 +1,181 @@
+,program_name,soft_skill,tf_idf_weight,rank,rank_type
+0,Biological Engineering,communication,405.24674894413056,1,top
+1,Biological Engineering,goal,291.4042088316847,2,top
+2,Biological Engineering,active listening,284.70690920988284,3,top
+3,Biological Engineering,accountability,190.31213933013967,4,top
+4,Biological Engineering,creativity,151.8094337027288,5,top
+5,Biological Engineering,decision making,99.01540983039946,6,top
+6,Biological Engineering,motivated,95.78033842018003,7,top
+7,Biological Engineering,emotional intelligence,93.3807940398437,8,top
+8,Biological Engineering,critical thinking,92.476511647148,9,top
+9,Biological Engineering,problem solving,92.1331484975383,10,top
+10,Biological Engineering,self-confidence,10.376209597839393,10,bottom
+11,Biological Engineering,speaking,9.464178856701361,9,bottom
+12,Biological Engineering,kindness,8.905167717748068,8,bottom
+13,Biological Engineering,influence,7.777895244249088,7,bottom
+14,Biological Engineering,coaching,7.181738615872101,6,bottom
+15,Biological Engineering,hospitality,2.6589005564594625,5,bottom
+16,Biological Engineering,conflict management,2.0852856929430237,4,bottom
+17,Biological Engineering,social skills,1.4214414135421798,3,bottom
+18,Biological Engineering,persuasion,1.072783215953932,2,bottom
+19,Biological Engineering,self-organized,0.0,1,bottom
+20,Biomedical Engineering,communication,328.8133163545453,1,top
+21,Biomedical Engineering,active listening,230.9193426901423,2,top
+22,Biomedical Engineering,goal,230.28731066386092,3,top
+23,Biomedical Engineering,accountability,157.08963870117609,4,top
+24,Biomedical Engineering,creativity,133.63525175618696,5,top
+25,Biomedical Engineering,decision making,82.0962772735951,6,top
+26,Biomedical Engineering,problem solving,81.75034767611916,7,top
+27,Biomedical Engineering,motivated,78.86837169808418,8,top
+28,Biomedical Engineering,emotional intelligence,77.68811266838188,9,top
+29,Biomedical Engineering,critical thinking,76.48145711880196,10,top
+30,Biomedical Engineering,speaking,8.162378291703023,10,bottom
+31,Biomedical Engineering,self-confidence,8.142015247256124,9,bottom
+32,Biomedical Engineering,kindness,8.037391941934198,8,bottom
+33,Biomedical Engineering,coaching,7.3751176804395255,7,bottom
+34,Biomedical Engineering,influence,6.625570690278754,6,bottom
+35,Biomedical Engineering,hospitality,1.52277364094713,5,bottom
+36,Biomedical Engineering,conflict management,1.5191754061565395,4,bottom
+37,Biomedical Engineering,social skills,1.2531564449747723,3,bottom
+38,Biomedical Engineering,persuasion,1.1647660519392857,2,bottom
+39,Biomedical Engineering,self-organized,0.0,1,bottom
+40,Mechanical Engineering,communication,317.1900920212972,1,top
+41,Mechanical Engineering,goal,228.74734790646676,2,top
+42,Mechanical Engineering,active listening,222.76534004034352,3,top
+43,Mechanical Engineering,accountability,145.17350387860319,4,top
+44,Mechanical Engineering,creativity,133.64709736567698,5,top
+45,Mechanical Engineering,decision making,92.63178691304641,6,top
+46,Mechanical Engineering,problem solving,85.48684354703616,7,top
+47,Mechanical Engineering,motivated,81.82089241260584,8,top
+48,Mechanical Engineering,emotional intelligence,80.20334906650199,9,top
+49,Mechanical Engineering,coordination,75.08749456605432,10,top
+50,Mechanical Engineering,self-confidence,8.451911717941519,10,bottom
+51,Mechanical Engineering,speaking,8.032780787915645,9,bottom
+52,Mechanical Engineering,coaching,6.668061384409192,8,bottom
+53,Mechanical Engineering,influence,6.592389370831786,7,bottom
+54,Mechanical Engineering,kindness,6.191496153041799,6,bottom
+55,Mechanical Engineering,hospitality,2.3703049899746134,5,bottom
+56,Mechanical Engineering,conflict management,1.6720336119024553,4,bottom
+57,Mechanical Engineering,persuasion,1.1446207896782925,3,bottom
+58,Mechanical Engineering,self-organized,0.0,2,bottom
+59,Mechanical Engineering,social skills,0.0,1,bottom
+60,Water Resources Engineering,communication,307.74471332897554,1,top
+61,Water Resources Engineering,goal,231.24009771463955,2,top
+62,Water Resources Engineering,active listening,216.8079042987619,3,top
+63,Water Resources Engineering,accountability,135.8757563624851,4,top
+64,Water Resources Engineering,creativity,104.66384536217033,5,top
+65,Water Resources Engineering,decision making,83.88563256850344,6,top
+66,Water Resources Engineering,motivated,76.81467643289656,7,top
+67,Water Resources Engineering,emotional intelligence,73.43021013878366,8,top
+68,Water Resources Engineering,coordination,73.302577939949,9,top
+69,Water Resources Engineering,problem solving,68.65465801296673,10,top
+70,Water Resources Engineering,speaking,7.533194224775887,10,bottom
+71,Water Resources Engineering,eagerness,7.183386050051916,9,bottom
+72,Water Resources Engineering,coaching,4.807483259297194,8,bottom
+73,Water Resources Engineering,kindness,4.709857589606537,7,bottom
+74,Water Resources Engineering,influence,4.700613088809951,6,bottom
+75,Water Resources Engineering,hospitality,2.117836744253494,5,bottom
+76,Water Resources Engineering,conflict management,1.5054548298630812,4,bottom
+77,Water Resources Engineering,social skills,0.6225686196983208,3,bottom
+78,Water Resources Engineering,persuasion,0.0,2,bottom
+79,Water Resources Engineering,self-organized,0.0,1,bottom
+80,Environmental Engineering,communication,317.2881930025586,1,top
+81,Environmental Engineering,goal,239.69158499863684,2,top
+82,Environmental Engineering,active listening,223.2939268601466,3,top
+83,Environmental Engineering,accountability,140.13140984193083,4,top
+84,Environmental Engineering,creativity,108.1226509738378,5,top
+85,Environmental Engineering,decision making,86.19167469712339,6,top
+86,Environmental Engineering,motivated,79.43064615107924,7,top
+87,Environmental Engineering,emotional intelligence,76.49146483574232,8,top
+88,Environmental Engineering,coordination,74.78816386915295,9,top
+89,Environmental Engineering,problem solving,71.3297132035666,10,top
+90,Environmental Engineering,speaking,7.7166282757521945,10,bottom
+91,Environmental Engineering,eagerness,7.474472400337508,9,bottom
+92,Environmental Engineering,coaching,4.936342594830455,8,bottom
+93,Environmental Engineering,kindness,4.927819284449037,7,bottom
+94,Environmental Engineering,influence,4.755756198561678,6,bottom
+95,Environmental Engineering,hospitality,2.469550218046664,5,bottom
+96,Environmental Engineering,conflict management,1.5052974718439327,4,bottom
+97,Environmental Engineering,social skills,0.6245511588263785,3,bottom
+98,Environmental Engineering,persuasion,0.0,2,bottom
+99,Environmental Engineering,self-organized,0.0,1,bottom
+100,Computer Engineering,communication,579.073084317584,1,top
+101,Computer Engineering,goal,418.73381931575346,2,top
+102,Computer Engineering,active listening,399.0819501599402,3,top
+103,Computer Engineering,creativity,308.8964960335095,4,top
+104,Computer Engineering,accountability,234.96848271277426,5,top
+105,Computer Engineering,problem solving,173.40128774406,6,top
+106,Computer Engineering,curiosity,138.45117051560518,7,top
+107,Computer Engineering,impartiality,134.5255707767273,8,top
+108,Computer Engineering,critical thinking,133.87600570240272,9,top
+109,Computer Engineering,decision making,131.05074132356322,10,top
+110,Computer Engineering,interpersonal communication,21.788845074159187,10,bottom
+111,Computer Engineering,speaking,16.968862208950714,9,bottom
+112,Computer Engineering,self-confidence,16.67871428760173,8,bottom
+113,Computer Engineering,influence,16.548232951020537,7,bottom
+114,Computer Engineering,hospitality,15.661939598710626,6,bottom
+115,Computer Engineering,kindness,10.674456315585683,5,bottom
+116,Computer Engineering,persuasion,2.784376308072593,4,bottom
+117,Computer Engineering,conflict management,2.086787840411117,3,bottom
+118,Computer Engineering,social skills,0.6092408901654209,2,bottom
+119,Computer Engineering,self-organized,0.0,1,bottom
+120,Computer Science,communication,502.00098647596565,1,top
+121,Computer Science,goal,359.1547303849164,2,top
+122,Computer Science,active listening,345.93703507296726,3,top
+123,Computer Science,creativity,279.31161756119025,4,top
+124,Computer Science,accountability,197.34886863217088,5,top
+125,Computer Science,problem solving,150.75675477502654,6,top
+126,Computer Science,curiosity,122.96625454175553,7,top
+127,Computer Science,impartiality,122.54946192235641,8,top
+128,Computer Science,critical thinking,118.251232606045,9,top
+129,Computer Science,analytical,110.10190554558393,10,top
+130,Computer Science,interpersonal communication,17.157996910294745,10,bottom
+131,Computer Science,influence,16.983404488868224,9,bottom
+132,Computer Science,hospitality,15.435170534397246,8,bottom
+133,Computer Science,self-confidence,15.402963461018736,7,bottom
+134,Computer Science,speaking,14.960150595300984,6,bottom
+135,Computer Science,kindness,8.699899886891156,5,bottom
+136,Computer Science,persuasion,4.121895160536753,4,bottom
+137,Computer Science,conflict management,1.3563147633502899,3,bottom
+138,Computer Science,social skills,0.568959837899244,2,bottom
+139,Computer Science,self-organized,0.0,1,bottom
+140,Engineering Systems & Computing,communication,615.020662076201,1,top
+141,Engineering Systems & Computing,goal,444.7224749103199,2,top
+142,Engineering Systems & Computing,active listening,424.8276559560953,3,top
+143,Engineering Systems & Computing,creativity,324.885822395726,4,top
+144,Engineering Systems & Computing,accountability,251.96616533985875,5,top
+145,Engineering Systems & Computing,problem solving,185.43629917464406,6,top
+146,Engineering Systems & Computing,curiosity,145.85208430469956,7,top
+147,Engineering Systems & Computing,decision making,145.19189458831897,8,top
+148,Engineering Systems & Computing,critical thinking,143.63982135901364,9,top
+149,Engineering Systems & Computing,impartiality,139.85763256572258,10,top
+150,Engineering Systems & Computing,interpersonal communication,23.707007122589502,10,bottom
+151,Engineering Systems & Computing,self-confidence,18.165646710760033,9,bottom
+152,Engineering Systems & Computing,speaking,17.9326129563502,8,bottom
+153,Engineering Systems & Computing,influence,17.189231753706085,7,bottom
+154,Engineering Systems & Computing,hospitality,15.800573369466612,6,bottom
+155,Engineering Systems & Computing,kindness,11.796622783225892,5,bottom
+156,Engineering Systems & Computing,persuasion,2.7913154952765633,4,bottom
+157,Engineering Systems & Computing,conflict management,2.2764011179177546,3,bottom
+158,Engineering Systems & Computing,social skills,0.6101562760604946,2,bottom
+159,Engineering Systems & Computing,self-organized,0.0,1,bottom
+160,Software Engineering,communication,498.01575381104834,1,top
+161,Software Engineering,goal,356.08273559665287,2,top
+162,Software Engineering,active listening,343.13307882769,3,top
+163,Software Engineering,creativity,277.5465130513136,4,top
+164,Software Engineering,accountability,195.41710851518954,5,top
+165,Software Engineering,problem solving,149.5574571262639,6,top
+166,Software Engineering,impartiality,121.9645590544676,7,top
+167,Software Engineering,curiosity,121.4707802977506,8,top
+168,Software Engineering,critical thinking,116.98673772415188,9,top
+169,Software Engineering,analytical,108.378333186755,10,top
+170,Software Engineering,interpersonal communication,17.033355446443867,10,bottom
+171,Software Engineering,influence,16.822531633767806,9,bottom
+172,Software Engineering,hospitality,15.407182979714882,8,bottom
+173,Software Engineering,self-confidence,15.105339942164218,7,bottom
+174,Software Engineering,speaking,14.882077909347386,6,bottom
+175,Software Engineering,kindness,8.68193178392704,5,bottom
+176,Software Engineering,persuasion,4.007659401235338,4,bottom
+177,Software Engineering,conflict management,1.315099070382104,3,bottom
+178,Software Engineering,social skills,0.5683609438248428,2,bottom
+179,Software Engineering,self-organized,0.0,1,bottom

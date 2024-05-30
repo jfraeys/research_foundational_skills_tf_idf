@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# mypy
+.mypy_cache/
+
+# JupyterLab's virtual documents
+.virtual_documents/
+
+# Python cache
+__pycache__/
+
+# Data and sensitive directories
+data/
+secrets/
+credentials/
+
+# Documentation and references
+docs/
+references/
+scripts/diagrams_method.py
+
