@@ -1,0 +1,313 @@
+---
+title: Reading the foundational skills
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.16.4
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+```{python}
+#| editable: true
+#| executionInfo: {elapsed: 3241, status: ok, timestamp: 1713304121424, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+#| slideshow: {slide_type: ''}
+import os
+
+import pandas as pd
+from ast import literal_eval
+```
+
+```{python}
+#| colab: {base_uri: 'https://localhost:8080/'}
+#| executionInfo: {elapsed: 221, status: ok, timestamp: 1713304125380, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+# Ensure the project directory is set correctly
+if not set(["notebooks", "scripts"]).issubset(os.listdir()):
+    os.chdir(os.path.dirname(os.getcwd()))
+```
+
+```{python}
+from scripts import analysis_helper
+
+from tqdm.notebook import tqdm
+tqdm.pandas()
+```
+
+```{python}
+#| executionInfo: {elapsed: 111, status: ok, timestamp: 1713304126529, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+# Define file paths
+job_prg_name_filename = "data/interim/post_processing_job_postings.csv"
+job_timeline_filename = "data/interim/post_processing_job_timeline.csv"
+foundal_skills_filename = "data/interim/post_processing_soft_skills.csv"
+replace_skills_prg_name = "data/interim/replace_skills_job_programs.csv"
+replace_skills_timeline = "data/interim/replace_skills_job_timeline.csv"
+```
+
+```{python}
+#| executionInfo: {elapsed: 119, status: ok, timestamp: 1713304128666, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+# Check if running in Google Colab
+try:
+    import google.colab
+
+    IN_COLAB = True
+except ImportError:
+    IN_COLAB = False
+```
+
+```{python}
+#| executionInfo: {elapsed: 168, status: ok, timestamp: 1713304370777, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+# Mount Google Drive and adjust file paths if in Google Colab
+if IN_COLAB:
+    drive_mounted_path = "/content/drive"
+
+    if not os.path.exists(drive_mounted_path):
+        from google.colab import drive
+
+        drive.mount(drive_mounted_path)
+
+    project_dir = "My Drive/School/UoGuelph/MSc/Research/soft_skills_job_desc/jfraeysd"
+    job_prg_name_filename = os.path.join(drive_mounted_path, project_dir, job_prg_name_filename)
+    job_timeline_filename = os.path.join(drive_mounted_path, project_dir, job_timeline_filename)
+    replace_skills_prg_name = os.path.join(drive_mounted_path, project_dir, replace_skills_prg_name)
+    replace_skills_timeline = os.path.join(drive_mounted_path, project_dir, replace_skills_timeline)
+    foundal_skills_filename = os.path.join(
+        drive_mounted_path, project_dir, foundal_skills_filename
+    )
+```
+
+
+
+```{python}
+#| executionInfo: {elapsed: 99, status: ok, timestamp: 1713304373691, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+```
+
+```{python}
+#| executionInfo: {elapsed: 119, status: ok, timestamp: 1713304374611, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+# Import soft skills data
+df_soft_skills = pd.read_csv(foundal_skills_filename)
+```
+
+```{python}
+#| executionInfo: {elapsed: 3, status: ok, timestamp: 1713304375357, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+# Read str as list in csv files
+# df_soft_skills['alt_labels']=df_soft_skills['alt_labels'].apply(literal_eval)
+df_soft_skills['alt_labels_lemm']=df_soft_skills['alt_labels_lemm'].apply(literal_eval)
+```
+
+# Reading job posting and replacing the alt_labels with the lemmatized alt_labels
+
+```{python}
+#| executionInfo: {elapsed: 14358, status: ok, timestamp: 1713304393002, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+# Read job description data
+df_coop_prg_name = pd.read_csv(replace_skills_prg_name)
+df_coop_timeline = pd.read_csv(replace_skills_timeline)
+```
+
+```{python}
+#| executionInfo: {elapsed: 117, status: ok, timestamp: 1713304400537, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+df_coop_timeline['date_goes_live'] = pd.to_datetime(df_coop_timeline['date_goes_live'])
+```
+
+```{python}
+df_coop_timeline['year'] = df_coop_timeline['date_goes_live'].dt.year
+```
+
+```{python}
+#| executionInfo: {elapsed: 96, status: ok, timestamp: 1713304401909, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+word_mapping = dict(zip(df_soft_skills['soft_skill_lemm'], df_soft_skills['alt_labels_lemm']))
+```
+
+```{python}
+df_coop_prg_name.shape
+```
+
+```{python}
+#| executionInfo: {elapsed: 199, status: ok, timestamp: 1713304536458, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+text_column = 'job_description_replaced_skills'
+grp_prg_name = df_coop_prg_name.groupby('program_name')
+```
+
+```{python}
+#| colab: {base_uri: 'https://localhost:8080/'}
+#| executionInfo: {elapsed: 118, status: ok, timestamp: 1713304416270, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+grp_prg_name.size()
+```
+
+```{python}
+#| colab: {base_uri: 'https://localhost:8080/', height: 49, referenced_widgets: [c2006f5e4eb849679b12ffa56f99f643, e99e023b8e7448ba96efd0ae8c158600, a71fdf16f74e427d9d4b22c73b34c1be, 8157d769a0ec4c9f995fe9ca632aea77, f3744fd36b1a4a3faf4ef6d1e499f964, 3419f82862ec47d692faaba58197a4bf, a712df195c1c4f7e9e2bf69cc8ed6a63, 3cdb46cac5c94f2c9a99a5882138c36c, 7422b654cb2d4e29b178b05f259eed6d, 0f5da2cbdc66402aa84376b9c818bb2a, 7c9f48d65730441390f70e2a6a093893]}
+grouped_data_term_frequencies = grp_prg_name.progress_apply(lambda group: analysis_helper.calculate_term_frequencies(group, text_column, word_mapping.keys()))
+grouped_data_term_counts = grp_prg_name.progress_apply(lambda group: analysis_helper.calculate_term_counts(group, text_column, word_mapping.keys()))
+grouped_data_document_frequencies = grp_prg_name.progress_apply(lambda group: analysis_helper.calculate_document_frequencies(group, text_column, word_mapping.keys()))
+```
+
+```{python}
+#| executionInfo: {elapsed: 3, status: aborted, timestamp: 1713304501565, user: {displayName: Jeremie Fraeys, userId: '16940547016236392797'}, user_tz: 240}
+count_skills_prg_name = analysis_helper.calculate_posting_counts_by_skills(grp_prg_name, text_column, word_mapping.keys())
+```
+
+```{python}
+count_skills_prg_name.sort_index(axis=1)
+```
+
+```{python}
+count_skills_prg_name_sorted = count_skills_prg_name.sort_index(axis=1)
+count_skills_prg_name_sorted.to_csv('count_skills_prg_name_sorted.csv')
+```
+
+```{python}
+analysis_helper.plot_line_graph(count_skills_prg_name.sort_index(axis=1), 'Number of Postings by Number of Foundational Skills for Each Program')
+```
+
+```{python}
+document_counts_tf_prg_name = analysis_helper.count_document_per_group_with_term_occurrences(grp_prg_name, text_column=text_column, terms=word_mapping.keys())
+```
+
+```{python}
+analysis_helper.create_all_skill_tables(document_counts_tf_prg_name, 'reports/document_counts_tf_prg_name.xlsx')
+```
+
+```{python}
+term_occurrences_per_prg_name = analysis_helper.count_document_per_group_with_total_term_occurrences(grp_prg_name, text_column, word_mapping.keys())
+```
+
+```{python}
+term_occurrences_per_prg_name.to_csv('reports/term_occurrences_per_prg_name.csv')
+term_occurrences_per_prg_name
+```
+
+```{python}
+print("Term Count:")
+
+# Compute average along rows (axis=1)
+average_values = grouped_data_term_counts.sum(axis=0)
+
+# Sort the pivot table based on average values
+grouped_data_term_counts = grouped_data_term_counts[average_values.sort_values(ascending=False).index]
+
+grouped_data_term_counts.to_csv("reports/prg_name_term_counts.csv")
+
+grouped_data_term_counts
+```
+
+```{python}
+print("Term Frequencies:")
+
+# Compute average along rows (axis=1)
+average_values = grouped_data_term_frequencies.mean(axis=0)
+
+# Sort the pivot table based on average values
+grouped_data_term_frequencies = grouped_data_term_frequencies[average_values.sort_values(ascending=False).index]
+
+grouped_data_term_frequencies.to_csv("reports/prg_name_term_freq.csv")
+
+grouped_data_term_frequencies
+```
+
+```{python}
+print("Document Frequencies:")
+
+# Compute average along rows (axis=1)
+average_values = grouped_data_document_frequencies.mean(axis=0)
+
+# Sort the pivot table based on average values
+grouped_data_document_frequencies = grouped_data_document_frequencies[average_values.sort_values(ascending=False).index]
+
+grouped_data_document_frequencies.to_csv("reports/prg_name_doc_freq.csv")
+
+grouped_data_document_frequencies
+```
+
+```{python}
+grp_yearly = df_coop_timeline.groupby('year')
+```
+
+```{python}
+grp_yearly.size()
+```
+
+```{python}
+#| colab: {referenced_widgets: [f4d8d01a102445deb117dce3b1478f59, 306d432d91db4f5891962d1c943d54a5, 8e11623c168d4df086264764a958048b]}
+grouped_year_term_frequencies = grp_yearly.progress_apply(lambda group: analysis_helper.calculate_term_frequencies(group, text_column, word_mapping.keys()))
+grouped_year_term_counts = grp_yearly.progress_apply(lambda group: analysis_helper.calculate_term_counts(group, text_column, word_mapping.keys()))
+grouped_year_document_frequencies = grp_yearly.progress_apply(lambda group: analysis_helper.calculate_document_frequencies(group, text_column, word_mapping.keys()))
+```
+
+```{python}
+#| colab: {referenced_widgets: [af601750ffef4557963f4f02c6a2f809]}
+count_skills_yearly = analysis_helper.calculate_posting_counts_by_skills(grp_yearly, text_column, word_mapping.keys())
+```
+
+```{python}
+count_skills_yearly_sorted = count_skills_yearly.sort_index(axis=1)
+count_skills_yearly_sorted.to_csv('reports/count_skills_yearly_sorted.csv')
+```
+
+```{python}
+analysis_helper.plot_line_graph(count_skills_yearly_sorted.sort_index(axis=1), title="Foundational skills in job postings categorized by years")
+```
+
+```{python}
+document_counts_tf_yearly = analysis_helper.count_document_per_group_with_term_occurrences(grp_yearly, text_column=text_column, terms=word_mapping.keys())
+```
+
+```{python}
+analysis_helper.create_all_skill_tables(document_counts_tf_yearly, 'reports/document_counts_tf_yearly.xlsx')
+```
+
+```{python}
+term_occurrences_per_year = analysis_helper.count_document_per_group_with_total_term_occurrences(grp_yearly, text_column, word_mapping.keys())
+```
+
+```{python}
+term_occurrences_per_year.to_csv('reports/term_occurrences_per_yearly.csv')
+term_occurrences_per_year
+```
+
+```{python}
+print("Term Count:")
+
+# Compute average along rows (axis=1)
+average_values = grouped_year_term_counts.mean(axis=0)
+
+# Sort the pivot table based on average values
+grouped_year_term_counts = grouped_year_term_counts[average_values.sort_values(ascending=False).index]
+
+grouped_year_term_counts.to_csv("reports/year_term_counts.csv")
+
+grouped_year_term_counts
+```
+
+```{python}
+print("Term Frequencies:")
+
+# Compute average along rows (axis=1)
+average_values = grouped_year_term_frequencies.mean(axis=0)
+
+# Sort the pivot table based on average values
+grouped_year_term_frequencies = grouped_year_term_frequencies[average_values.sort_values(ascending=False).index]
+
+grouped_year_term_frequencies.to_csv("reports/year_term_freq.csv")
+
+grouped_year_term_frequencies
+```
+
+```{python}
+print("Document Frequencies:")
+# Compute average along rows (axis=1)
+average_values = grouped_year_document_frequencies.mean(axis=0)
+
+# Sort the pivot table based on average values
+grouped_year_document_frequencies = grouped_year_document_frequencies[average_values.sort_values(ascending=False).index]
+
+grouped_year_document_frequencies.to_csv("reports/year_doc_freq.csv")
+
+grouped_year_document_frequencies
+```
+
